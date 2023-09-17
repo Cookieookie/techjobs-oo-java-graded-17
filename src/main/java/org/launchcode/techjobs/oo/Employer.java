@@ -3,16 +3,16 @@ package org.launchcode.techjobs.oo;
 import java.util.Objects;
 
 public class Employer {
-
+// class fields
     private int id;
     private static int nextId = 1;
     private String value;
-
+// constructor #1
     public Employer() {
         id = nextId;
         nextId++;
     }
-
+// constructor #2
     public Employer(String value) {
         this();
         this.value = value;
