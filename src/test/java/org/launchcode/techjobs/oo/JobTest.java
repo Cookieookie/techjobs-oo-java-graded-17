@@ -2,6 +2,8 @@ package org.launchcode.techjobs.oo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.launchcode.techjobs.oo.Job;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 
@@ -26,7 +28,6 @@ public class JobTest {
         Assert.assertEquals(test_job.getPositionType().getValue(), "Quality control");
         Assert.assertEquals(test_job.getCoreCompetency().getValue(), "Persistence");
 
-
         // 5 assertTrue Tests
         Assert.assertTrue(test_job.getName() == "Product tester");
         Assert.assertTrue(test_job.getEmployer() instanceof Employer);
@@ -37,9 +38,46 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"));
-        Job test_job_two = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"));
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job test_job_two = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Assert.assertFalse((test_job.equals(test_job_two)));
+    }
+
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String newLine = System.lineSeparator();
+        boolean startString = test_job.toString().startsWith(newLine);
+        boolean endString = test_job.toString().endsWith(newLine);
+        Assert.assertEquals(true, startString);
+        Assert.assertEquals(true, endString);
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        Assert.assertEquals(System.lineSeparator() +
+                "ID: 1" + System.lineSeparator() +
+                "Name: Product tester" + System.lineSeparator() +
+                "Employer: ACME" + System.lineSeparator() +
+                "Location: Desert" + System.lineSeparator() +
+                "Position Type: Quality control" + System.lineSeparator() +
+                "Core Competency: Persistence" + System.lineSeparator(), test_job.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job test_job_empty = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+
+        Assert.assertEquals(System.lineSeparator() +
+                "ID: 1" + System.lineSeparator() +
+                "Name: Data not available" + System.lineSeparator() +
+                "Employer: Data not available" + System.lineSeparator() +
+                "Location: Data not available" + System.lineSeparator() +
+                "Position Type: Data not available" + System.lineSeparator() +
+                "Core Competency: Data not available" + System.lineSeparator(), test_job_empty.toString());
     }
 
     }
