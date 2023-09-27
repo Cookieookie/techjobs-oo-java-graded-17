@@ -1,7 +1,5 @@
 package org.launchcode.techjobs.oo;
 
-import java.util.Objects;
-
 public class Job {
 
     private int id;
@@ -16,13 +14,13 @@ public class Job {
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
-public Job() {
+public Job(String productTester, Employer acme, Location desert, PositionType positionType) {
     id = nextId;
     nextId++;
 }
 
 public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-    this(); //calls first constructor???
+    this("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control")); //calls first constructor???
     this.name = name;
     this.employer = employer;
     this.location = location;
