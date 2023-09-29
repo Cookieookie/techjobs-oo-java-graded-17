@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.Objects;
+
 public class Job {
 
     private int id;
@@ -39,17 +41,21 @@ public Job(String name, Employer employer, Location location, PositionType posit
         return getId() == job.getId();
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     @Override
     public String toString() {
 
-        return System.lineSeparator() +
-            "ID: " + getId() + System.lineSeparator() +
-            "Name: " + (getName().isEmpty() ? "Data not available" : getName()) + System.lineSeparator() +
-            "Employer: " + (getEmployer().getValue().isEmpty() ? "Data not available" : getEmployer()) + System.lineSeparator() +
-            "Location: " + (getLocation().getValue().isEmpty() ? "Data not available" : getLocation()) + System.lineSeparator() +
-            "Position Type: " + (getPositionType().getValue().isEmpty() ? "Data not available" : getPositionType()) + System.lineSeparator() +
-            "Core Competency: " + (getCoreCompetency().getValue().isEmpty() ? "Data not available" : getCoreCompetency()) + System.lineSeparator();
+        return "\n" +
+            "ID: " + getId() + "\n" +
+            "Name: " + (getName().isEmpty() ? "Data not available" : getName()) + "\n" +
+            "Employer: " + (getEmployer().getValue().isEmpty() ? "Data not available" : getEmployer()) + "\n" +
+            "Location: " + (getLocation().getValue().isEmpty() ? "Data not available" : getLocation()) + "\n" +
+            "Position Type: " + (getPositionType().getValue().isEmpty() ? "Data not available" : getPositionType()) + "\n" +
+            "Core Competency: " + (getCoreCompetency().getValue().isEmpty() ? "Data not available" : getCoreCompetency()) + "\n";
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID

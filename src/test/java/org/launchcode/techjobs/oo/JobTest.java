@@ -47,7 +47,7 @@ public class JobTest {
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        String newLine = System.lineSeparator();
+        String newLine = "\n";
         boolean startString = test_job.toString().startsWith(newLine);
         boolean endString = test_job.toString().endsWith(newLine);
         Assert.assertEquals(true, startString);
@@ -58,26 +58,26 @@ public class JobTest {
     public void testToStringContainsCorrectLabelsAndData() {
         Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        Assert.assertEquals(System.lineSeparator() +
-                "ID: 1" + System.lineSeparator() +
-                "Name: Product tester" + System.lineSeparator() +
-                "Employer: ACME" + System.lineSeparator() +
-                "Location: Desert" + System.lineSeparator() +
-                "Position Type: Quality control" + System.lineSeparator() +
-                "Core Competency: Persistence" + System.lineSeparator(), test_job.toString());
+        Assert.assertEquals("\n" +
+                "ID: " + test_job.getId() + "\n" +
+                "Name: Product tester" + "\n" +
+                "Employer: ACME" + "\n" +
+                "Location: Desert" + "\n" +
+                "Position Type: Quality control" + "\n" +
+                "Core Competency: Persistence" + "\n", test_job.toString());
     }
 
     @Test
     public void testToStringHandlesEmptyField() {
         Job test_job_empty = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
 
-        Assert.assertEquals(System.lineSeparator() +
-                "ID: 1" + System.lineSeparator() +
-                "Name: Data not available" + System.lineSeparator() +
-                "Employer: Data not available" + System.lineSeparator() +
-                "Location: Data not available" + System.lineSeparator() +
-                "Position Type: Data not available" + System.lineSeparator() +
-                "Core Competency: Data not available" + System.lineSeparator(), test_job_empty.toString());
+        Assert.assertEquals("\n" +
+                "ID: " + test_job_empty.getId() + "\n" +
+                "Name: Data not available" + "\n" +
+                "Employer: Data not available" + "\n" +
+                "Location: Data not available" + "\n" +
+                "Position Type: Data not available" + "\n" +
+                "Core Competency: Data not available" + "\n", test_job_empty.toString());
     }
 
     }
