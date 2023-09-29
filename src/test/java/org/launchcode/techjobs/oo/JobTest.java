@@ -13,8 +13,8 @@ public class JobTest {
 
     @Test
     public void testSettingJobId() {
-        Job test_job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"));
-        Job test_job_two = new Job("Junior Web Developer", new Employer("Cozy"), new Location("Portland"), new PositionType("Web - Front End"));
+        Job test_job = new Job();
+        Job test_job_two = new Job();
         Assert.assertNotEquals(test_job, test_job_two);
     }
 
