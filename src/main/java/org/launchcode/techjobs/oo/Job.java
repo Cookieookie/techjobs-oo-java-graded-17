@@ -39,7 +39,7 @@ public Job(String name, Employer employer, Location location, PositionType posit
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id; //fixed to only return job.id
     }
 
     @Override
@@ -50,13 +50,13 @@ public Job(String name, Employer employer, Location location, PositionType posit
     @Override
     public String toString() {
 
-        return "\n" +
-            "ID: " + getId() + "\n" +
-            "Name: " + (getName().isEmpty() ? "Data not available" : getName()) + "\n" +
-            "Employer: " + (getEmployer().getValue().isEmpty() ? "Data not available" : getEmployer()) + "\n" +
-            "Location: " + (getLocation().getValue().isEmpty() ? "Data not available" : getLocation()) + "\n" +
-            "Position Type: " + (getPositionType().getValue().isEmpty() ? "Data not available" : getPositionType()) + "\n" +
-            "Core Competency: " + (getCoreCompetency().getValue().isEmpty() ? "Data not available" : getCoreCompetency()) + "\n";
+        return System.lineSeparator() +
+            "ID: " + getId() + System.lineSeparator() +
+            "Name: " + (getName().isBlank() ? "Data not available" : getName()) + System.lineSeparator() +
+            "Employer: " + (getEmployer().getValue().isBlank() ? "Data not available" : getEmployer()) + System.lineSeparator() +
+            "Location: " + (getLocation().getValue().isBlank() ? "Data not available" : getLocation()) + System.lineSeparator() +
+            "Position Type: " + (getPositionType().getValue().isBlank() ? "Data not available" : getPositionType()) + System.lineSeparator() +
+            "Core Competency: " + (getCoreCompetency().getValue().isBlank() ? "Data not available" : getCoreCompetency()) + System.lineSeparator();
     }
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
